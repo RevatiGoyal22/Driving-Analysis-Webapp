@@ -10,24 +10,28 @@
 </head>
 <body class="bg-black details">
 
-    <nav class="navbar navbar-expand-lg nav-style d-flex justify-content-around">
-    <a href="#" class="btn btn-light btnD">Award</a>
-    <a href="realTime.html" class="btn btn-light btnDesign">Real-time</a>
-    <a href="index.html" class="btn btn-light btnDesign">Driving Sessions</a>
-    <a href="#" class="btn btn-light btnDesign  b ">Support</a>
-    </nav>
-
-    <div class="d-flex justify-content-around mt-2 mb-3 ">
+    <nav class="navbar">
+		<div class="navdiv d-flex flex-end">
+			<div class="logo"><a href="#">DriveInsight</a> </div>
+			<ul>
+                <li><a href="#">Login</a></li>
+				<li><a href="index.html">Driving Sessions</a></li>
+				<li><a href="realTime.html">Real time</a></li>
+				<li><a href="#">Support</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="d-flex justify-content-around mt-2 mb-3 fontStyle" style="font-size: 20px;" >
         <span id ='date'></span>
         <span id ='distance'>Distance: 0 Km</span>
         <span id ='session'>Session: 0 min</span>
 
     </div>
-    <div class="d-flex justify-content-around mb-4 mt-4 mr-2">
+    <div class="mb-4 mt-4 mr-2 graphDisplayStyle">
         <div class="stressPercentage"></div>
         <div class="agrresiveDistribution"></div>
     </div>
-    <div class="d-flex justify-content-around completeResult">
+    <div class="d-flex justify-content-around completeResult " style="font-size: 20px;">
 
         <div class="overallFeedback">
             <p>Risky Situation 
@@ -45,7 +49,7 @@
     </div>
     <div class="drivingHistory details">
         <h3 class="pb-3">Driving History</h3>
-            <table class=" table-primary " >
+            <table class=" table-primary fontStyle" >
                 <thead>
                     <tr >
                         <th>Features</th>

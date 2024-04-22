@@ -1,15 +1,78 @@
 *{
     color:white;
+    text-decoration: none;
 }
 .details{
     margin-left: 15px;
     margin-right: 15px;
+    scroll-behavior: smooth;
 }
-.nav-style{
-    margin-top: 20px;
+.fontStyle{
+    font-size: 17px;
 }
+.navbar{
+    background: linear-gradient(45deg,rgb(0, 0, 0),black); 
+    font-family: calibri;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.navdiv{
+    display: flex; align-items: center; 
+    justify-content: space-between;
+}
+.navdiv ul{
+    position: absolute;
+    right: 0px;
+    align-items: center;
+    padding: 15px 10px 0px 10px;
+}
+.logo a{
+    font-size: 30px; 
+    align-items: center;
+
+    font-weight: 600; color: white;
+    text-decoration: none;
+}
+li{
+    list-style: none; display: inline-block;
+}
+li a{
+    text-decoration: none;
+    color: white; 
+    font-size: 20px; 
+    font-weight: bold;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+li:hover{
+    background: linear-gradient(45deg, red,black);
+    padding: 5px;
+    border-radius: 4px;
+}
+@media only screen and (max-width: 591px) {
+    .logo{
+        display: none;
+    }
+    .navdiv ul{
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+    }
+    .graphDisplayStyle{
+        display: block !important;
+        width: 270px;
+        align-items: center;
+        margin: 0px auto;
+    }
+}
+.graphDisplayStyle{
+    display: flex;
+    justify-content: space-around;
+}
+
 .stressPercentage{
-/* position: absolute; */
+
 min-width: 270px;
 min-height: 250px;
 background: white;
@@ -20,6 +83,7 @@ background: white;
     min-height: 250px;
     background: red;
     margin-right: 10px;
+    margin-top: 10px;
 }
 .aggressivePercentage{
 width: 249px;
@@ -35,11 +99,12 @@ right:0;
 
 .drivingHistory{
     padding: 40px 40px;
+    margin: 0 auto;
 }
 @media screen and (min-width: 1300px) {
-  .drivingHistory {
+    .drivingHistory {
     padding: 85px; 
-  }
+    }
 }
 table {
     border-collapse: collapse;
@@ -105,4 +170,14 @@ tbody:last-child tr{
 }
 .instantResult{
     padding-top: 10px;
+    font-size: 20px;
+}
+#instantAdvice, #instantEmoji{
+
+    font-size: 30px;
+    color: gray;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    padding-right: 5px;
+    
 }
