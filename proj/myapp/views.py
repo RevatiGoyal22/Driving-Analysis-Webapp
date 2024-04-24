@@ -10,6 +10,8 @@ import pandas as pd
 data = pd.read_excel('C:/Users/91638/PycharmProjects/pythonProject1/proj/Train_test_data_for_app.xlsx')
 df_test = pd.read_excel("C:/Users/91638/PycharmProjects/pythonProject1/proj/Train_test_data_for_app.xlsx", "Sheet2")
 
+
+
 data_new = data[['ibi', 'rmssd', 'sd1/sd2', 'lf/hf', 'Cluster']]
 X = data_new.iloc[:, 0:4]
 Y = data_new.iloc[:, -1]
@@ -110,3 +112,5 @@ def result_view(request):
 def real_time_view(request):
     return render(request, 'real_time.html', {"bpm": bpm, "speed": speed, "ibi": ibi})
 
+def login_view(request):    
+    return render(request,'login.html')
