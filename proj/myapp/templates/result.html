@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    color:white;
+    text-decoration: none;
+}
+.details{
+    margin-left: 15px;
+    margin-right: 15px;
+    scroll-behavior: smooth;
+}
+.fontStyle{
+    font-size: 17px;
+}
+.navbar{
+    background: linear-gradient(45deg,rgb(0, 0, 0),black);
+    font-family: calibri;
+    padding-right: 15px;
+    padding-left: 15px;
+    border-bottom: 2px solid white;
+    width: 100%;
+}
+.navdiv{
+    display: flex; align-items: center;
+    justify-content: space-between;
+}
+.navdiv ul{
+    position: absolute;
+    right: 0px;
+    align-items: center;
+    padding: 15px 10px 0px 10px;
+}
+.logo a{
+    font-size: 30px;
+    align-items: center;
+
+    font-weight: 600; color: white;
+    text-decoration: none;
+}
+li{
+    list-style: none; display: inline-block;
+}
+li a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+li:hover{
+    background: linear-gradient(45deg, red,black);
+    padding: 5px;
+    border-radius: 4px;
+}
+@media only screen and (max-width: 591px) {
+    .logo{
+        display: none;
+    }
+    .navdiv ul{
+        position: relative;
+        display: flex;
+        justify-content: space-around;
+    }
+    .graphDisplayStyle{
+        display: block !important;
+        width: 270px;
+        align-items: center;
+        margin: 0px auto;
+    }
+}
+.graphDisplayStyle{
+    display: flex;
+    justify-content: space-around;
+}
+
+.stressPercentage{
+
+width: 420px;
+height: 420px;
+background: white;
+}
+.agrresiveDistribution{
+    /* position: absolute; */
+    width: 420px;
+    height: 420px;
+    background: white;
+    margin-right: 10px;
+    margin-top: 10px;
+}
+.aggressivePercentage{
+width: 300px;
+height: 300px;
+background: #FFFFFF;
+right:0;
+margin-top: 30px;
+}
+
+.completeResult{
+    align-items: center;
+    padding-top:-10px ;
+}
+
+.drivingHistory{
+    padding: 40px 40px;
+    margin: 0 auto;
+}
+@media screen and (min-width: 1300px) {
+    .drivingHistory {
+    padding: 85px;
+    }
+}
+table {
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 1200px;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+
+}
+
+thead th{
+    border: 1px solid white;
+    border-top: none;
+}
+tbody tr {
+    border: 1px solid white;
+
+}
+
+tbody td, th{
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+}
+tbody:last-child tr{
+    height: 15px;
+    border-bottom: none;
+}
+
+
+/* RealTime Page */
+.realTimeStress{
+    width:100%;
+    background-color: #FFFFFF;
+    min-height: 270px;
+    height: auto;
+    margin: 15px auto;
+}
+
+.agressiveScroll{
+    width:100%;
+    margin: 15px auto;
+    background-color: rgb(45, 235, 45);
+    height: 40px;
+    border-radius: 12px;
+}
+
+.instantlastStyle{
+    margin: 45px auto;
+}
+.aggresiveVsStress{
+    width: 55%;
+    background-color: rgb(90, 224, 28);
+    min-height: 270px;
+    height: auto;
+}
+.titleDisplay{
+    height: 270px;
+    background:linear-gradient(20deg,white,rgb(90, 224, 28));
+    margin-left: 15px;
+    margin-right: 30px;
+    width: 90px;
+}
+
+.instantResult{
+    padding-top: 10px;
+    font-size: 20px;
+}
+#instantAdvice, #instantEmoji{
+
+    font-size: 30px;
+    color: gray;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    padding-right: 5px;
+
+}
+.vertical-text {
+    writing-mode: vertical-rl; /* Vertical text from bottom to top */
+    text-orientation: upright; /* Ensures upright orientation of characters */
+    transform: rotate(180deg); /* Rotate the text 180 degrees to display it properly */
+}
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-black details">
+
+    <nav class="navbar">
+		<div class="navdiv d-flex flex-end">
+			<div class="logo"><a href="#">DriveInsight</a> </div>
+			<ul>
+                <li><a href="">Login</a></li>
+				<li><a href="/real_time">Driving Sessions</a></li>
+				<li><a href="/result">Insights</a></li>
+				<li><a href="">Support</a></li>
+			</ul>
+		</div>
+	</nav>
+    <div class="mb-4 mt-4 mr-2 graphDisplayStyle">
+
+        <div class="stressPercentage">
+            <canvas id="stressBarChart" width="400" height="400"></canvas>
+            <span>Stress Categories</span>
+        </div>
+        <div class="agrresiveDistribution" >
+            <canvas id="aggBarChart" width="400" height="400"></canvas>
+            <span>Aggression Categories</span>
+        </div>
+    </div>
+    <div class="d-flex justify-content-around completeResult " style="font-size: 20px;">
+
+        <div class="overallFeedback">
+            <p>Risky Situation:
+                <span id="riskResult"></span>
+            </p>
+            <p>Break Alert:
+                <span id="breakAlert"></span>
+            </p>
+            <p>Overall Driver Feedback
+                <span id="overallResultEmoji">😊</span>
+            </p>
+            <p></p>
+        </div>
+        <div class="aggressivePercentage">
+            <canvas id="myPieChart" width="400" height="400"></canvas>
+            <span>Aggression Percentage Pie Chart</span>
+        </div>
+    </div>
+    <div class="drivingHistory details">
+        <h3 class="pb-3">Driving History</h3>
+            <table class=" table-primary fontStyle" >
+                <thead>
+                    <tr >
+                        <th>Features</th>
+                        <th>Compared to previous day</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>High Stress</th>
+                        <td id="highStress">0</td>
+                    </tr>
+                    <tr>
+                        <th>Risky Situation</th>
+                        <td id="riskySituation">0</td>
+                    </tr>
+                    <tr>
+                        <th>High Aggressiveness</th>
+                        <td id="highAgg">0</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+    </div>
+    <script>
+        document.getElementById("highStress").innerText = {{diffStress | safe}}.toFixed(2)
+        document.getElementById("highAgg").innerText = {{diffAgg | safe}}.toFixed(2)
+        document.getElementById("riskySituation").innerText = {{diffRisky | safe}}.toFixed(2)
+        let breakAlert = {{teaBreakAlert | safe}}
+        document.getElementById("breakAlert").innerText = breakAlert
+        console.log(breakAlert)
+        let avgStress = {{avgStress | safe}}
+        let avgAgg = {{avgAgg | safe}}
+        var datePlace = document.getElementById("date")
+        let risk = (0.6*avgAgg)+(0.4*avgStress)
+        risk = risk*50
+        risk = risk.toFixed(2)
+        document.getElementById("riskResult").innerText = risk
+        if(risk<33){
+            document.getElementById("overallResultEmoji").innerHTML = `\u{1F60A}`;
+        }
+        else if((risk>33) && (risk<66)){
+            document.getElementById("overallResultEmoji").innerHTML = `\u{1F611}`;
+        }
+        else if(risk>66){
+            document.getElementById("overallResultEmoji").innerHTML = `\u{1F622}`;
+        }
+        var ctxAgg = document.getElementById('aggBarChart').getContext('2d');
+        var aggData = {
+            labels: {{ Agg_X | safe }},
+            datasets: [{
+                label: 'Aggregated Percentage Bar Graph',
+                data: {{ Agg_Y | safe }},
+                backgroundColor: ['rgba(255, 99, 132, 0.5)','rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        };
+        var aggBarChart = new Chart(ctxAgg, {
+            type: 'bar',
+            data: aggData,
+            barPercentage: 0.2,
+            categoryPercentage: 1.5
+        });
+
+        var ctxStress = document.getElementById('stressBarChart').getContext('2d');
+        var stressData = {
+            labels: ["High", "Medium", "Low"],
+            datasets: [{
+                label: 'Stress vs Speed Graph',
+                data: {{ stress_bar | safe }},
+                backgroundColor: ['rgba(255, 99, 132, 0.5)','rgba(54, 162, 235, 0.5)', 'rgba(75, 192, 192, 0.5)'],
+                borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)', 'rgba(75, 192, 192, 1)'],
+                borderWidth: 1
+            }]
+        };
+        var stressBarChart = new Chart(ctxStress, {
+            type: 'bar',
+            data: stressData,
+
+        });
+
+        var ctxPie = document.getElementById('myPieChart').getContext('2d');
+
+        // Define data
+        var dataPie = {
+            labels: {{ Agg_X | safe }},
+            datasets: [{
+                label: 'Aggression Categories Percentage',
+                data: {{ Agg_Y | safe }},
+                backgroundColor: [
+                    'rgba(255, 99, 132, 0.5)',
+                    'rgba(54, 162, 235, 0.5)',
+                    'rgba(255, 206, 86, 0.5)'
+                ],
+                borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        var myPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: dataPie
+        });
+
+
+    </script>
+</body>
+</html>
